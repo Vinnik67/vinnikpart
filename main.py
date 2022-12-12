@@ -1,4 +1,6 @@
 import random
+
+
 class Student:
     def __init__(self, firstname):
         self.firstname = firstname
@@ -17,10 +19,10 @@ class Lessons(Student):
         self.today_satiety -= 1
 
     def biology(self):
-        self.knowledge += 1
-        self.today_mood -= 0.5
-        self.energy -= 1.5
-        self.today_satiety -= 1
+            self.knowledge += 1
+            self.today_mood -= 0.5
+            self.energy -= 1.5
+            self.today_satiety -= 1
 
     def geography(self):
         self.knowledge += 1
@@ -130,67 +132,67 @@ class Time:
         self.break2_time = 600
         self.dinner = 1500
 
-        def rest_time(self):
-            print('Time to rest')
-            self.knowledge -= 0.5
-            self.mood += 2
-            self.energy += 1
+    def rest_time(self):
+        print('Time to rest')
+        self.knowledge -= 0.5
+        self.mood += 2
+        self.energy += 1
 
-        def sleep(self):
-            print('Time to sleep')
-            self.energy += 2
+    def sleep(self):
+        print('Time to sleep')
+        self.energy += 2
 
-        def pause(self):
-            if self.mood < 5:
-                self.rest_time()
-            elif self.energy < 5:
-                self.sleep()
+    def pause(self):
+        if self.mood < 5:
+            self.rest_time()
+        elif self.energy < 5:
+            self.sleep()
 
-        def lunch(self):
+    def lunch(self):
             print('Час їсти')
             self.today_satiety += 2
 
-        def study(self):
-            print('Час вчитися')
-            cube = random.randint(1, 19)
-            if cube == 1:
-                self.math()
-            elif cube == 2:
-                self.biology()
-            elif cube == 3:
-                self.geography()
-            elif cube == 4:
-                self.english()
-            elif cube == 5:
-                self.german()
-            elif cube == 6:
-                self.chemistry()
-            elif cube == 7:
-                self.spanish()
-            elif cube == 8:
-                self.pe()
-            elif cube == 9:
-                self.history()
-            elif cube == 10:
-                self.business()
-            elif cube == 11:
-                self.physics()
-            elif cube == 12:
-                self.chemistry()
-            elif cube == 13:
-                self.python()
-            elif cube == 14:
-                self.blender()
-            elif cube == 15:
-                self.ukr_literature()
-            elif cube == 16:
-                self.world_literature()
-            elif cube == 17:
-                self.ukr_language()
-            elif cube == 18:
-                self.civil_education()
-            elif cube == 19:
-                self.national_defense()
+    def study(self):
+        print('Час вчитися')
+        cube = random.randint(1, 19)
+        if cube == 1:
+            self.math()
+        elif cube == 2:
+            self.biology()
+        elif cube == 3:
+            self.geography()
+        elif cube == 4:
+            self.english()
+        elif cube == 5:
+            self.german()
+        elif cube == 6:
+            self.chemistry()
+        elif cube == 7:
+            self.spanish()
+        elif cube == 8:
+            self.pe()
+        elif cube == 9:
+            self.history()
+        elif cube == 10:
+            self.business()
+        elif cube == 11:
+            self.physics()
+        elif cube == 12:
+            self.chemistry()
+        elif cube == 13:
+            self.python()
+        elif cube == 14:
+            self.blender()
+        elif cube == 15:
+            self.ukr_literature()
+        elif cube == 16:
+            self.world_literature()
+        elif cube == 17:
+            self.ukr_language()
+        elif cube == 18:
+            self.civil_education()
+        elif cube == 19:
+            self.national_defense()
 
 
 class Home(Student):
@@ -236,36 +238,35 @@ class Pause(Lessons):
         self.today_mood += 2
         self.energy += 2
 
-
     def sleep(self):
         print('Час спати')
         self.knowledge -= 1
         self.energy += 2
 
-
     def lunch(self):
         print('Час їсти')
         self.today_satiety += 2
 
+    def get_today(self, day):
+        print(f'День {day:^5d} з життя {self.first_name}а')
+        print(f'Настрій = {self.today_mood}')
+        print(f'Ситість = {self.today_satiety}')
+        print(f'Знання = {round(self.knowledge, 2)}')
 
-        def get_today(self, day):
-            print(f'День {day:^5d} з життя {self.first_name}а')
-            print(f'Настрій = {self.today_mood}')
-            print(f'Ситість = {self.today_satiety}')
-            print(f'Знання = {round(self.knowledge, 2)}')
+    def pause(self):
+        if self.today_mood < 5:
+            self.rest_time()
+        elif self.energy < 5:
+            self.sleep()
+        elif self.knowledge < 5:
+            self.study()
+        elif self.today_satiety < 5:
+            self.lunch()
 
-        def pause(self):
-            if self.today_mood < 5:
-                self.rest_time()
-            elif self.energy < 5:
-                self.sleep()
-            elif self.knowledge < 5:
-                self.study()
-            elif self.today_satiety < 5:
-                self.lunch()
 
-        student = Pause('школярик')
-        for day in range(1, 365):
-            student.pause()
-            student.get_today(day)
+student = Pause('школярик')
+for day in range(1, 365):
+    student.pause()
+    student.get_today(day)
 
+print(Life)
